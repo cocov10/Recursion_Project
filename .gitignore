@@ -1,0 +1,8 @@
+*.log
+*.tmp
+*.temp
+
+venv/
+env/
+ENV/
+.venv/
