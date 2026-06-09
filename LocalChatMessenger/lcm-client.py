@@ -1,7 +1,6 @@
 import socket
 import sys
 
-# TCP
 sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
 server_address = './tmp/lcm_socket_file'
 print('connecting to {}'.format(server_address))
@@ -14,7 +13,7 @@ except socket.error as err:
 
 try:
     while True:
-        user_input = input("質問を入力してください。('exit'で終了): ")
+        user_input = input("最近どうですか？('exit'で終了): ")
         
         if user_input.lower() == 'exit':
             print('終了します。')

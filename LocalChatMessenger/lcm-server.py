@@ -1,9 +1,6 @@
-# lcm-server,py
-# /home/root01/python_practice/recursion_project/LocalChatMessenger
-# python_practice/recursion_project/LocalChatMessenger
-
 import socket
 import os
+import random
 from faker import Faker
 
 fake = Faker('ja_JP')
@@ -35,11 +32,14 @@ while True:
                 data_str = data.decode('utf-8')
                 print('Received ' + data_str)
                 fake_name = fake.name()
-                # fake_address = fake.address()
-                # response = f'Hi I am {fake_name}, \nI living {fake_address}' 
-                # fake_catch = fake.catch_phrase()
-                # response = f"hello I am {fake_name}, {fake_catch}"
-                response = fake.text(max_nb_chars=200)
+                fake_company = fake.company()
+                fake_sentence = fake.sentence()
+                templates = [
+                    f"{fake_name}さんも同じごと言ってましたよ。「{fake_sentence}」って。",
+                    f"そうなんですね。{fake_company} の人たちもよくそんな話をしています。",
+                    f"なるほど、「{data_str}」なんですね。よく{fake_sentence}といいますよね。"
+                ]
+                response = templates[random.randint(0,2)]
                 connection.sendall(response.encode('utf-8'))
             else:
                 print('no data from', client_address)
