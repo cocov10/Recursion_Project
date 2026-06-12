@@ -26,7 +26,7 @@ with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
             data = connection.recv(1024)                
             if not data:
                 print("データがありません。", client_address)
-                break
+                continue # 次のクライアントの接続を待つ。
 
             request_json = json.loads(data.decode('utf-8'))
             print(f"受信したJSON: {request_json}")

@@ -25,7 +25,7 @@ with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
 
         response = sock.recv(1024)
 
-        result = json.loads(response.decode('utf=8'))
+        result = json.loads(response.decode('utf-8'))
         print("サーバーからの返信:")
         print(result)
 
